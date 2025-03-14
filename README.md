@@ -21,8 +21,8 @@ This is our UNIHACK hackathon project.
 
 ## Features
 
-- feature 1
-- feature 2
+- Feature 1
+- Feature 2
 
 ## Tech Stack
 
