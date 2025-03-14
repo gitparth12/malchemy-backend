@@ -26,11 +26,9 @@ This is our UNIHACK hackathon project.
 
 ## Tech Stack
 
-- **Backend**: Python, Flask, Flask-SocketIO
-- **Frontend**: JavaScript, Socket.IO
-- **Database**: SQLite, SQLAlchemy (ORM)
-- **Cryptographic Libraries**: PyCryptodome (or PyCA/cryptography)
-- **Authentication**: JSON Web Tokens (JWT) or server-side sessions
+- **Backend**: 
+- **Frontend**: 
+- **Database**: 
 
 ## Getting Started
 
