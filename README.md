@@ -21,8 +21,8 @@ This is our UNIHACK hackathon project.
 
 ## Features
 
-- Feature 1
-- Feature 2
+- Ingredient image recognition with Gemini API
+- Recipe generation with Spoonacular API
 
 ## Tech Stack
 
