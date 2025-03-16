@@ -1,7 +1,7 @@
 import requests
 import json
 from dotenv import load_dotenv
-from os import environ
+from os import environ, path
 
 load_dotenv()
 
@@ -26,7 +26,7 @@ def get_recipes() -> list:
     if response.status_code == 200:
         response = response.json()['results']
         print(f'Fetched {len(response)} recipes, moving onto full information\n')
-        return response['results']
+        return response
 
     print("Error:", response.status_code, response.text)
     exit(1)

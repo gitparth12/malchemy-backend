@@ -5,7 +5,9 @@ if not (SPOONACULAR_API_KEY and GEMINI_API_KEY):
     exit(1)
 
 
-recipe_list = get_recipes()
-recipe_info_list = get_recipe_info(recipe_list)
-
-print(type(recipe_list), type(recipe_info_list))
+if not path.exists('recipes_info.json'):
+    recipe_list = get_recipes()
+    recipe_info_list = get_recipe_info(recipe_list)
+else:
+    print('Recipe info already saved, skipping API calls. Disable this code in production.')
+    recipe_info_list = json.load(open('recipes_info.json'))
