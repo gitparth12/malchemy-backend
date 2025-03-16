@@ -5,7 +5,7 @@ if not (SPOONACULAR_API_KEY and GEMINI_API_KEY):
     exit(1)
 
 
-ingredients = get_ingredients_from_image('test-images/example-2.jpg')
+ingredients = get_ingredients_from_image('test-images/example-3.jpg')
 
 if not path.exists('recipes_info.json'):
     recipe_list = get_recipes(ingredients=ingredients)
