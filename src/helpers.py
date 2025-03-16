@@ -7,6 +7,8 @@ import PIL.Image
 
 load_dotenv()
 
+IMAGE_DIR = "data/images"
+
 RECIPE_SEARCH_URL = "https://api.spoonacular.com/recipes/complexSearch"
 RECIPE_INFO_URL = "https://api.spoonacular.com/recipes/informationBulk"
 
@@ -109,3 +111,6 @@ def get_ingredients_from_image(image_path):
     return response.text
 
 
+def get_filtered_recipe_json(recipe_info_list):
+    for recipe in recipe_info_list:
+        pass
