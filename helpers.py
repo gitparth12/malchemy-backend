@@ -1,7 +1,9 @@
 import requests
 import json
 from dotenv import load_dotenv
-from os import environ, path, mkdir
+from os import environ, path, makedirs
+from google import genai
+import PIL.Image
 
 load_dotenv()
 
@@ -58,11 +60,11 @@ def get_recipe_info(recipe_list) -> list:
 
     
 def save_recipes_md(recipe_info_list):
-    if not path.exists('data'):
-        mkdir('data')
+    if not path.exists('data/recipes'):
+        makedirs('data/recipes')
     
     for i, recipe in enumerate(recipe_info_list):
-        with open(f'data/recipe_{i}_info.md', 'w') as md_file:
+        with open(f'data/recipes/{i}_info.md', 'w') as md_file:
             md_file.write("# Recipe Information\n\n")
             
             # Iterate over the recipes and write information to the Markdown file
@@ -89,3 +91,18 @@ def save_recipes_md(recipe_info_list):
             
             # Separator between recipes
             md_file.write("\n---\n\n")
+
+
+def get_ingredients_from_image(image_path):
+    if not path.exists(image_path):
+        print("Image doesn't exist. Please check provided path.")
+
+    image = PIL.Image.open(image_path)
+    client = genai.Client(api_key=GEMINI_API_KEY)
+
+    response = client.models.generate_content(
+        model="gemini-2.0-flash", 
+        contents=[{"text": "What foods/ingredients are in this image? The answer should be either one word or a comma-separated and capitalised list of words."}, image]  # Asking a question about the image
+    )
+
+    return response.text
