@@ -1,4 +1,4 @@
-# Malchemy
+# Flask API Project
 
 ## Table of Contents
 
@@ -7,86 +7,108 @@
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
-	- [Commit Messages](#commit-messages)
-	- [Branch Names](#branch-names)
-	- [Pull Requests](#pull-requests)
-		- [Title](#title)
-		- [Description](#description)
-		- [Example Pull Request](#example-pr)
+  - [Commit Messages](#commit-messages)
+  - [Branch Names](#branch-names)
+  - [Pull Requests](#pull-requests)
+    - [Title](#title)
+    - [Description](#description)
+    - [Example Pull Request](#example-pr)
 - [Developing Team](#developing-team)
 
 ## Overview
 
-This is our UNIHACK hackathon project.
+This is a Flask-based backend application that serves API endpoints for malchemy.
 
 ## Features
 
-- Ingredient image recognition with Gemini API
-- Recipe generation with Spoonacular API
+- REST API endpoints to fetch and process data
+- JSON responses for seamless frontend integration
+- Modular Flask structure for maintainability
 
 ## Tech Stack
 
-- **Backend**: 
-- **Frontend**: 
-- **Database**: 
+- **Backend**: Flask, Python
+- **Frontend**: TypeScript, React, TailwindCSS
 
 ## Getting Started
 
-1. Clone the repository: `git clone https://github.com/your-repo-url.git`
-2. Navigate to the project directory: `cd secure-messaging-app`
-3. Install the required Python packages: `pip install -r requirements.txt`
-4. Run the application: `python app.py`
-5. Access the application in your web browser at `https://localhost:5000`
+1. Clone the repository:  
+   ```sh
+   git clone https://github.com/gitparth12/malchemy-backend.git
+   ```
+2. Navigate to the project directory  
+3. Create a virtual environment and activate it:  
+   ```sh
+   python -m venv venv
+   source venv/bin/activate  # On Windows use: venv\Scripts\activate
+   ```
+4. Install the required Python packages:  
+   ```sh
+   pip install -r requirements.txt
+   ```
+5. Run the Flask application:  
+   ```sh
+   python src/app.py
+   ```
+6. Access the API at:  
+   ```
+   http://localhost:5000
+   ```
 
 ## Contributing
 
-Read the guidelines below to write good commit messages, branch names, and make pull requests that follow the conventions we will be using throughout the project.
+Read the guidelines below to ensure consistency in commit messages, branch names, and pull requests.
 
 ### Commit Messages
 
-- Capitalise the subject line.
+- Capitalize the subject line.
 - Do not end with a period.
-- Use imperative mood, i.e. instead of *"Added ..."* write *"Add ..."*.
-- Keep messages logical and relevant, do not write things like *"Please work"* or *"I hate frontend"*. To help decide the extent of this, imagine trying to access a point in the project 2 weeks ago, it would be better to have something like *"Add CSS for Navbar template"* or , so that we know from a glance what the commit is for.
-- For more detailed messages, use `git commit -m <title> -m <description>`, however short and concise is still preferred.
+- Use imperative mood, e.g., *"Add endpoint for fetching user data"* instead of *"Added..."*.
+- Keep messages clear and relevant.
+- For detailed messages, use:  
+  ```sh
+  git commit -m "Title" -m "Description"
+  ```
 
 ### Branch Names
-Make a branch using `git checkout -b <branch_name>`.
-- Names fall under one of **4** categories
-	- Minor Feature: `minor-FeatureName`
-	- Major Feature: `major-FeatureName`
-	- Patch: `patch-PatchName`
-	- Miscellaneous: `name`
-		- For example `documentation` for changing the README, or adding another markdown
+
+Branches should follow one of these categories:
+
+- **Feature**: `feature-<name>` (e.g., `feature-authentication`)
+- **Fix**: `fix-<name>` (e.g., `fix-api-response`)
+- **Refactor**: `refactor-<name>` (e.g., `refactor-logging`)
+- **Docs**: `docs-<name>` (e.g., `docs-readme-update`)
+
+Create a branch using:
+```sh
+git checkout -b <branch_name>
+```
 
 ### Pull Requests
-*Summarised from [this article](https://namingconvention.org/git/pull-request-naming.html).*
 
 #### Title
 - Short and descriptive summary
-- Should be capitalized and written in imperative present tense
-- Do not end with period
+- Capitalized and written in imperative present tense
+- No period at the end
 
 #### Description
-- Separated with a blank line from the subject
-- Explain what, why, etc.
-- Max 72 chars
-- Each paragraph capitalized
+- Separate from the title with a blank line
+- Explain what and why the changes were made
+- Keep lines under 72 characters
 
 #### Example Pull Request
 ```
-This pull request is part of the work to make it easier for people to contribute to naming convention guides. One of the easiest way to make small changes would be using the Edit on Github button.
+This pull request adds a new API endpoint for retrieving user details.
 
-To achieve this, we needed to:
-- Find the best Gitbook plugin which can do the work
-- Integrate it in all the pages to redirect the user to the right page on GitHub for editing
-- Make it visible on the page so users can notice it easily
+To implement this, we:
+- Created a new route in `src/api.py`
+- Added authentication checks for secure access
+- Updated documentation with usage instructions
 ```
 
 ## Developing Team
 - Aqif
-- [Devanshi Mirchandani](https://github.com/devanshimirchandani)
-- Parth Bhargava
-- Nasf
+- Devanshi
+- Parth
+- Nasif
 - Jenny
-

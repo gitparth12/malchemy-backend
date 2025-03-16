@@ -7,6 +7,8 @@ import PIL.Image
 
 load_dotenv()
 
+IMAGE_DIR = "data/images"
+
 RECIPE_SEARCH_URL = "https://api.spoonacular.com/recipes/complexSearch"
 RECIPE_INFO_URL = "https://api.spoonacular.com/recipes/informationBulk"
 
@@ -109,3 +111,17 @@ def get_ingredients_from_image(image_path):
     return response.text
 
 
+def get_filtered_recipe_json(recipe_info_list):
+    json_list = []
+    for recipe in recipe_info_list:
+        obj = {}
+        obj['title'] = recipe['title']
+        obj['time'] = recipe['readyInMinutes']
+        obj['calories'] = recipe['nutrition']['nutrients'][0]['amount']
+        obj['protein'] = recipe['nutrition']['nutrients'][10]['amount']
+        obj['ingredients'] = [ingredient['name'] for ingredient in recipe['nutrition']['ingredients']]
+        obj['summary'] = recipe['summary']
+        obj['cuisines'] = recipe['cuisines']
+        obj['instructions'] = [x['step'] for x in recipe['analyzedInstructions'][0]['steps']]
+        json_list.append(obj)
+    return json_list
