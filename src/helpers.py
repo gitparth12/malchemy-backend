@@ -112,5 +112,16 @@ def get_ingredients_from_image(image_path):
 
 
 def get_filtered_recipe_json(recipe_info_list):
+    json_list = []
     for recipe in recipe_info_list:
-        pass
+        obj = {}
+        obj['title'] = recipe['title']
+        obj['time'] = recipe['readyInMinutes']
+        obj['calories'] = recipe['nutrition']['nutrients']['Calories']
+        obj['protein'] = recipe['nutrition']['nutrients']['Protein']
+        obj['ingredients'] = [ingredient['name'] for ingredient in recipe['nutrition']['ingredients']]
+        obj['summary'] = recipe['summary']
+        obj['cuisines'] = recipe['cuisines']
+        obj['instructions'] = [x['step'] for x in recipe['analyzedInstructions'][0]['steps']]
+        json_list.append(obj)
+    return json_list

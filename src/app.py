@@ -3,8 +3,13 @@ from flask_cors import CORS
 from PIL import Image
 from helpers import *
 
+UPLOAD_FOLDER = 'data/images/'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/api/hello', methods=['GET'])
 def get_data():
@@ -28,12 +33,9 @@ def upload_image():
     ingredients = get_ingredients_from_image(image_path)
     recipe_list = get_recipes(ingredients=ingredients)
     recipe_info_list = get_recipe_info(recipe_list)
+    json_list = get_filtered_recipe_json(recipe_info_list)
+    return jsonify(json_list)
 
-    # # Example: Open the image with Pillow and get size
-    # with Image.open(image_path) as img:
-    #     width, height = img.size
-
-    # return jsonify({"message": "Image uploaded successfully", "width": width, "height": height})
 
 if __name__ == '__main__':
     if not (SPOONACULAR_API_KEY and GEMINI_API_KEY):
