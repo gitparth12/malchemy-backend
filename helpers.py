@@ -13,9 +13,9 @@ RECIPE_INFO_URL = "https://api.spoonacular.com/recipes/informationBulk"
 SPOONACULAR_API_KEY = environ.get('SPOONACULAR_API_KEY')
 GEMINI_API_KEY = environ.get('GEMINI_API_KEY')
 
-def get_recipes() -> list:
+def get_recipes(ingredients="chicken,tomato,basil,garlic") -> list:
     params = {
-        "includeIngredients": "chicken,tomato,basil,garlic",
+        "includeIngredients": ingredients,
         "cuisine": "italian,mexican",
         "intolerances": "shellfish,peanuts",
         "number": 10,
@@ -96,6 +96,7 @@ def save_recipes_md(recipe_info_list):
 def get_ingredients_from_image(image_path):
     if not path.exists(image_path):
         print("Image doesn't exist. Please check provided path.")
+        exit(1)
 
     image = PIL.Image.open(image_path)
     client = genai.Client(api_key=GEMINI_API_KEY)

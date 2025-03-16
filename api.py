@@ -5,10 +5,13 @@ if not (SPOONACULAR_API_KEY and GEMINI_API_KEY):
     exit(1)
 
 
+ingredients = get_ingredients_from_image('test-images/example-2.jpg')
+
 if not path.exists('recipes_info.json'):
-    recipe_list = get_recipes()
+    recipe_list = get_recipes(ingredient=ingredients)
     recipe_info_list = get_recipe_info(recipe_list)
 else:
     print('Recipe info already saved, skipping API calls. Disable this code in production.')
     recipe_info_list = json.load(open('recipes_info.json'))
     save_recipes_md(recipe_info_list)
+    print(ingredients)
