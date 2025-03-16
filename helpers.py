@@ -1,6 +1,9 @@
 import requests
 import json
+from dotenv import load_dotenv
 from os import environ
+
+load_dotenv()
 
 RECIPE_SEARCH_URL = "https://api.spoonacular.com/recipes/complexSearch"
 RECIPE_INFO_URL = "https://api.spoonacular.com/recipes/informationBulk"
@@ -8,10 +11,9 @@ RECIPE_INFO_URL = "https://api.spoonacular.com/recipes/informationBulk"
 SPOONACULAR_API_KEY = environ.get('SPOONACULAR_API_KEY')
 GEMINI_API_KEY = environ.get('GEMINI_API_KEY')
 
-def get_recipes():
+def get_recipes() -> list:
     params = {
-        "includeIngredients": "chicken,tomato,basil,garlic,onion,carrot,broccoli,\
-                mushroom,cheese,eggs,rice,pasta,beans,spinach,cilantro,lemon,avocado",
+        "includeIngredients": "chicken,tomato,basil,garlic",
         "cuisine": "italian,mexican",
         "intolerances": "shellfish,peanuts",
         "number": 10,
@@ -22,15 +24,15 @@ def get_recipes():
     response = requests.get(RECIPE_SEARCH_URL, params=params)
 
     if response.status_code == 200:
-        response = response.json()
+        response = response.json()['results']
         print(f'Fetched {len(response)} recipes, moving onto full information\n')
-        return response
+        return response['results']
 
     print("Error:", response.status_code, response.text)
     exit(1)
 
 
-def get_recipe_info(recipe_list):
+def get_recipe_info(recipe_list) -> list:
     recipe_ids = [x['id'] for x in recipe_list]
 
     params = {
@@ -45,9 +47,9 @@ def get_recipe_info(recipe_list):
         print(f'Fetched full recipe information for {len(response)} recipes.')
 
         # Write recipe info in a file for testing
-        response = json.dumps(response.json(), indent=2)
+        response_string = json.dumps(response, indent=2)
         with open('recipes_info.json', 'w') as f:
-            f.write(response)
+            f.write(response_string)
 
         return response
     else:

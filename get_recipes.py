@@ -1,6 +1,6 @@
 from helpers import *
 
-if not environ.get('SPOONACULAR_API_KEY') or not environ.get('GEMINI_API_KEY'):
+if not (SPOONACULAR_API_KEY and GEMINI_API_KEY):
     print("Can't access at least one necessary API key, exiting.")
     exit(1)
 
