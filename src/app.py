@@ -27,7 +27,7 @@ def upload_image():
 
     
     # Save the image
-    image_path = path.join(IMAGE_DIR, image.filename)
+    image_path = path.join(IMAGE_DIR, 'uploaded_img.jpg')
     image.save(image_path)
 
     ingredients = get_ingredients_from_image(image_path)

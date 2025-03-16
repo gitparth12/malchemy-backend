@@ -117,8 +117,8 @@ def get_filtered_recipe_json(recipe_info_list):
         obj = {}
         obj['title'] = recipe['title']
         obj['time'] = recipe['readyInMinutes']
-        obj['calories'] = recipe['nutrition']['nutrients']['Calories']
-        obj['protein'] = recipe['nutrition']['nutrients']['Protein']
+        obj['calories'] = recipe['nutrition']['nutrients'][0]['amount']
+        obj['protein'] = recipe['nutrition']['nutrients'][10]['amount']
         obj['ingredients'] = [ingredient['name'] for ingredient in recipe['nutrition']['ingredients']]
         obj['summary'] = recipe['summary']
         obj['cuisines'] = recipe['cuisines']
