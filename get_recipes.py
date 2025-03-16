@@ -11,3 +11,4 @@ if not path.exists('recipes_info.json'):
 else:
     print('Recipe info already saved, skipping API calls. Disable this code in production.')
     recipe_info_list = json.load(open('recipes_info.json'))
+    save_recipes_md(recipe_info_list)
