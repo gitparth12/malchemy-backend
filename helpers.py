@@ -107,3 +107,5 @@ def get_ingredients_from_image(image_path):
     )
 
     return response.text
+
+
